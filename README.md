@@ -1,3 +1,6 @@
 # d3-challenge
 
-In this project, we are utilizing D3 to build a diagram. 
+- To Do's:
+
+Deploy Website
+Make Sure it All Works
