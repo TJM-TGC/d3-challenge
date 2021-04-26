@@ -54,5 +54,48 @@ const yScale = d3.scaleLinear()
 
 // The Axes
 
-const xAxis = d3.axisBottom(xScale)
-}
+const xAxis = d3.axisBottom(xScale);
+const yAxis = d3.axisLeft(yScale);
+
+// Append Axes to Chartgroup
+chartGroup.append("g").attr("transform", 'translate(0, ${height})').call(xAxis);
+chartGroup.append("g").call(yAxis);
+
+
+chartGroup.selectAll("circle")
+.data(CensusData)
+.enter()
+.append("circle")
+.attr("cx",d=>xScale(d.poverty))
+.attr("cy",d=>yScale(d.healthcare))
+.attr("r","11")
+.classed("stateCircle", true)
+.attr("opactity", 0.75);
+
+
+chartGroup.append("g")
+.selectAll('text')
+.data(CensusData)
+.enter()
+.append("text")
+.text(d=>d.abbr)
+.attr("x",d=>xScale(d.poverty))
+.attr("y",d=>yScale(d.healthcare))
+.classed("stateText", true);
+
+//============add axes titles=========
+chartGroup.append("text")
+.attr("transform", `translate(${width/2}, ${height + margin.top + 20})`)
+.classed("axis", true)
+.text("In Poverty (%)");
+
+chartGroup.append("text")
+.attr("y", 0 - ((margin.left / 2) + 15))
+.attr("x", 0 - (height / 2))
+.classed("axis", true)
+.attr("transform", "rotate(-90)")
+.text("Lacks Healthcare (%)");
+}).catch(function(error) {
+console.log(error);
+
+});
