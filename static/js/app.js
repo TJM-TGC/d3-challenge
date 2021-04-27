@@ -29,7 +29,7 @@ var chartGroup = svg.append("g")
 
 // Load Data
 
-d3.csv("assets/data/data.csv").then(function(stateData) {
+d3.csv("./static/data.csv").then(function(stateData) {
 // Parse Data ----
     stateData.forEach(function(data) {
         data.poverty = +data.poverty;
