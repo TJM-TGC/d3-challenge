@@ -24,7 +24,7 @@ var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
  // Import Data
-d3.csv("static/data/data.csv").then(function(stateData) {
+d3.csv("./static/data/data.csv").then(function(stateData) {
 
   // Parse data (step 1)
   stateData.forEach(function(data) {
